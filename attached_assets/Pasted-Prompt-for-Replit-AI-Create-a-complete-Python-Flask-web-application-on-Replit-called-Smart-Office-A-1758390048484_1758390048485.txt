@@ -1,0 +1,125 @@
+Prompt for Replit AI
+Create a complete Python Flask web application on Replit called "Smart Office Assistant."
+
+The application will function as an intelligent tool for drafting emails. It will take an original email, key points for the reply, and a desired tone as input. It will then construct a detailed prompt and use the Groq API to generate a polished, professional email reply. The entire project should be self-contained within Replit.
+
+1. Core Functionality
+The project is divided into two main parts:
+
+Part 1: Prompt Construction
+
+The user provides three inputs:
+
+The full text of the original email they received.
+
+Key points they want to include in their response (e.g., bullet points, short notes).
+
+The desired tone for the reply (selected from a list).
+
+The backend must programmatically combine these three inputs into a single, well-structured prompt that will be sent to the AI.
+
+Part 2: AI-Powered Reply Generation
+
+This constructed prompt is sent to the Groq API.
+
+The AI model generates a complete, professional email reply based on the detailed instructions.
+
+The final generated email is displayed to the user, ready for them to copy and use.
+
+2. Technical Specifications
+Backend: Python with the Flask web framework.
+
+AI Integration: Use the groq Python library with the llama3-8b-8192 model.
+
+Dependencies: The requirements.txt file must contain Flask, groq, and python-dotenv.
+
+API Key Management: The code must be set up to use Replit Secrets to securely store and access the GROQ_API_KEY.
+
+3. Frontend Design & User Interface
+Please create a clean, modern, and intuitive user interface.
+
+File Structure:
+
+main.py
+
+templates/index.html
+
+static/style.css
+
+Visual Theme:
+
+Layout: Use a two-column layout for wider screens. The left column will be for user inputs, and the right will display the AI-generated output. On mobile, the columns should stack vertically.
+
+Color Scheme: A professional light theme. Use a white background (#FFFFFF), light gray (#F0F2F5) for containers, and a professional green accent (#108A00) for the button and interactive elements.
+
+Typography: Use a clean sans-serif font like 'Roboto' from Google Fonts.
+
+UI Components:
+
+Input Column (Left):
+
+A main title: "Smart Office Assistant 📧".
+
+A labeled <textarea> for "Original Email Received".
+
+A second labeled <textarea> for "Your Key Reply Points".
+
+A dropdown menu <select> labeled "Select Tone" with options: "Formal", "Friendly & Casual", "Direct & Concise", "Apologetic".
+
+A stylish "Draft Reply" button with a subtle hover effect.
+
+Output Column (Right):
+
+A title: "AI-Generated Reply".
+
+A pre-formatted block or card to display the generated text, ensuring line breaks are preserved.
+
+A "Copy to Clipboard" button, ideally with an icon, that allows the user to copy the entire generated reply with one click.
+
+A placeholder message in the output area like "Your drafted reply will appear here..." before the first generation.
+
+4. Backend Logic (main.py)
+Set up a Flask application with a single route / that handles both GET (for displaying the page) and POST (for processing the inputs) requests.
+
+In the POST logic:
+
+Retrieve the original_email, key_points, and tone from the submitted form.
+
+Crucially, construct the master prompt by embedding these variables into a larger, instructive template.
+
+Initialize the Groq client using the API key from Replit Secrets.
+
+Send the fully constructed prompt to the Groq API.
+
+Receive the response and pass the generated text to the index.html template for display.
+
+5. Prompt Construction Template
+Use this exact f-string template in your Python code to build the prompt that will be sent to the Groq API. This is the core of the "Prompt Construction" part of the project.
+
+Python
+
+# Example of the logic inside your Flask route
+original_email = request.form['original_email']
+key_points = request.form['key_points']
+tone = request.form['tone']
+
+master_prompt = f"""
+As an expert professional communications assistant, your task is to draft a perfect email reply.
+
+**Analyze the original email below:**
+---
+{original_email}
+---
+
+**Use the following key points to construct the reply:**
+---
+{key_points}
+---
+
+**Instructions:**
+1.  Write a complete email reply.
+2.  Incorporate all the provided key points naturally into the message.
+3.  Adopt a strictly **{tone}** tone.
+4.  Ensure the final output is only the email text, starting with the greeting (e.g., "Hello [Name],") and ending with the sign-off (e.g., "Best regards,"). Do not include any extra commentary.
+"""
+Please generate all the necessary files (main.py, templates/index.html, static/style.css, requirements.txt) to create this functional and well-designed application.

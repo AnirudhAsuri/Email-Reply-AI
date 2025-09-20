@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Office Assistant 📧</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,0,1;wght@300;400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Smart Office Assistant 📧</h1>
+        </header>
+        
+        <div class="main-content">
+            <!-- Input Column (Left) -->
+            <div class="input-column">
+                <form method="POST" id="emailForm">
+                    <div class="form-group">
+                        <label for="original_email">Original Email Received</label>
+                        <textarea 
+                            id="original_email" 
+                            name="original_email" 
+                            placeholder="Paste the email you received here..."
+                            required>{{ original_email or '' }}</textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="key_points">Your Key Reply Points</label>
+                        <textarea 
+                            id="key_points" 
+                            name="key_points" 
+                            placeholder="• Point 1&#10;• Point 2&#10;• Point 3"
+                            required>{{ key_points or '' }}</textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="tone">Select Tone</label>
+                        <select id="tone" name="tone" required>
+                            <option value="Formal" {{ 'selected' if tone == 'Formal' else '' }}>Formal</option>
+                            <option value="Friendly & Casual" {{ 'selected' if tone == 'Friendly & Casual' else '' }}>Friendly & Casual</option>
+                            <option value="Direct & Concise" {{ 'selected' if tone == 'Direct & Concise' else '' }}>Direct & Concise</option>
+                            <option value="Apologetic" {{ 'selected' if tone == 'Apologetic' else '' }}>Apologetic</option>
+                        </select>
+                    </div>
+                    
+                    <button type="submit" class="draft-btn" id="draftBtn">
+                        <span id="btnText">Draft Reply</span>
+                        <span id="btnLoader" class="loader" style="display: none;"></span>
+                    </button>
+                </form>
+                
+                {% if error %}
+                <div class="error-message">
+                    {{ error }}
+                </div>
+                {% endif %}
+            </div>
+            
+            <!-- Output Column (Right) -->
+            <div class="output-column">
+                <div class="output-header">
+                    <h2>AI-Generated Reply</h2>
+                    {% if generated_reply %}
+                    <button class="copy-btn" onclick="copyToClipboard()">
+                        📋 Copy to Clipboard
+                    </button>
+                    {% endif %}
+                </div>
+                
+                <div class="output-content">
+                    {% if generated_reply %}
+                    <pre id="generatedReply">{{ generated_reply }}</pre>
+                    {% else %}
+                    <div class="placeholder">
+                        Your drafted reply will appear here...
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Handle form submission with loading state
+        document.getElementById('emailForm').addEventListener('submit', function() {
+            const btn = document.getElementById('draftBtn');
+            const btnText = document.getElementById('btnText');
+            const btnLoader = document.getElementById('btnLoader');
+            
+            btn.disabled = true;
+            btnText.style.display = 'none';
+            btnLoader.style.display = 'inline-block';
+        });
+        
+        // Copy to clipboard functionality
+        function copyToClipboard() {
+            const replyText = document.getElementById('generatedReply').textContent;
+            navigator.clipboard.writeText(replyText).then(function() {
+                const copyBtn = document.querySelector('.copy-btn');
+                const originalText = copyBtn.innerHTML;
+                copyBtn.innerHTML = '✓ Copied!';
+                copyBtn.style.backgroundColor = '#28a745';
+                
+                setTimeout(function() {
+                    copyBtn.innerHTML = originalText;
+                    copyBtn.style.backgroundColor = '#108A00';
+                }, 2000);
+            }).catch(function(err) {
+                console.error('Could not copy text: ', err);
+                alert('Copy failed. Please select and copy the text manually.');
+            });
+        }
+    </script>
+</body>
+</html>

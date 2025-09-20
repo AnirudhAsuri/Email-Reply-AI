@@ -1,0 +1,266 @@
+/* Professional Light Theme for Smart Office Assistant */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #FFFFFF;
+    color: #333333;
+    line-height: 1.6;
+    min-height: 100vh;
+}
+
+.container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+header h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #108A00;
+    margin-bottom: 10px;
+}
+
+.main-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    min-height: 80vh;
+}
+
+/* Input Column Styling */
+.input-column {
+    background-color: #F0F2F5;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.form-group {
+    margin-bottom: 25px;
+}
+
+.form-group label {
+    display: block;
+    font-weight: 500;
+    color: #333333;
+    margin-bottom: 8px;
+    font-size: 1rem;
+}
+
+.form-group textarea {
+    width: 100%;
+    min-height: 120px;
+    padding: 15px;
+    border: 2px solid #e1e5e9;
+    border-radius: 8px;
+    font-family: 'Roboto', sans-serif;
+    font-size: 14px;
+    resize: vertical;
+    transition: border-color 0.3s ease;
+    background-color: #FFFFFF;
+}
+
+.form-group textarea:focus {
+    outline: none;
+    border-color: #108A00;
+    box-shadow: 0 0 0 3px rgba(16, 138, 0, 0.1);
+}
+
+.form-group select {
+    width: 100%;
+    padding: 15px;
+    border: 2px solid #e1e5e9;
+    border-radius: 8px;
+    font-family: 'Roboto', sans-serif;
+    font-size: 14px;
+    background-color: #FFFFFF;
+    cursor: pointer;
+    transition: border-color 0.3s ease;
+}
+
+.form-group select:focus {
+    outline: none;
+    border-color: #108A00;
+    box-shadow: 0 0 0 3px rgba(16, 138, 0, 0.1);
+}
+
+.draft-btn {
+    width: 100%;
+    padding: 15px 30px;
+    background-color: #108A00;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.draft-btn:hover:not(:disabled) {
+    background-color: #0d7300;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(16, 138, 0, 0.3);
+}
+
+.draft-btn:disabled {
+    background-color: #6c757d;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+}
+
+.loader {
+    width: 20px;
+    height: 20px;
+    border: 2px solid #ffffff;
+    border-top: 2px solid transparent;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Output Column Styling */
+.output-column {
+    background-color: #F0F2F5;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+}
+
+.output-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.output-header h2 {
+    font-size: 1.5rem;
+    font-weight: 500;
+    color: #333333;
+}
+
+.copy-btn {
+    padding: 10px 20px;
+    background-color: #108A00;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.copy-btn:hover {
+    background-color: #0d7300;
+    transform: translateY(-1px);
+}
+
+.output-content {
+    flex: 1;
+    background-color: #FFFFFF;
+    border: 2px solid #e1e5e9;
+    border-radius: 8px;
+    padding: 20px;
+    min-height: 300px;
+}
+
+.output-content pre {
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    font-family: 'Roboto', sans-serif;
+    font-size: 14px;
+    line-height: 1.6;
+    color: #333333;
+    margin: 0;
+}
+
+.placeholder {
+    color: #888888;
+    font-style: italic;
+    text-align: center;
+    padding: 60px 20px;
+    font-size: 16px;
+}
+
+.error-message {
+    background-color: #f8d7da;
+    color: #721c24;
+    padding: 15px;
+    border: 1px solid #f5c6cb;
+    border-radius: 8px;
+    margin-top: 20px;
+    font-weight: 500;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .main-content {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    
+    .container {
+        padding: 15px;
+    }
+    
+    header h1 {
+        font-size: 2rem;
+    }
+    
+    .input-column,
+    .output-column {
+        padding: 20px;
+    }
+    
+    .output-header {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    
+    .copy-btn {
+        align-self: center;
+    }
+}
+
+@media (max-width: 480px) {
+    header h1 {
+        font-size: 1.75rem;
+    }
+    
+    .form-group textarea {
+        min-height: 100px;
+    }
+    
+    .input-column,
+    .output-column {
+        padding: 15px;
+    }
+}

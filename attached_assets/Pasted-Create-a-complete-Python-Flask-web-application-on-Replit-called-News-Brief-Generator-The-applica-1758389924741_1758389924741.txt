@@ -1,0 +1,98 @@
+Create a complete Python Flask web application on Replit called "News Brief Generator."
+
+The application's purpose is to take a news article as input, generate three different styles of summaries using the Groq API, and then programmatically determine and highlight the most relevant summary based on keyword overlap. The project must be self-contained within Replit, requiring no external databases or cloud storage.
+
+1. Core Functionality
+User Input: The user will paste the full text of a news article into a text area on the web page.
+
+AI Summarization: Upon clicking a "Generate" button, the backend will use the groq Python library to make three separate API calls to generate the following summaries:
+
+Bulleted Summary: A concise list of the key takeaways.
+
+Abstractive Summary: A fluid, single-paragraph summary capturing the article's essence.
+
+Simple English Summary: An explanation of the article that is easy for anyone to understand.
+
+Summary Analysis & Selection:
+
+The backend will first extract the top 10 most significant keywords from the original article text.
+
+It will then calculate a "keyword overlap score" for each of the three generated summaries by checking how many of the original keywords appear in each summary.
+
+The summary with the highest score will be identified as the "Most Relevant" summary.
+
+Display Output: The application will display all three summaries in distinct sections. The "Most Relevant" summary will be visually highlighted to stand out.
+
+2. Technical Specifications
+Backend: Python with the Flask framework.
+
+AI Integration: Use the groq Python library. The AI model should be llama3-8b-8192.
+
+Dependencies: The requirements.txt file must include Flask, groq, python-dotenv, and scikit-learn.
+
+API Key Management: The code should be configured to read the GROQ_API_KEY from Replit Secrets. Include comments in the code explaining how the user can set this up.
+
+3. Frontend Design & User Interface
+Please create a creative and visually appealing single-page interface.
+
+File Structure:
+
+main.py
+
+requirements.txt
+
+templates/index.html
+
+static/style.css
+
+Visual Theme:
+
+Layout: A modern, clean, single-column layout.
+
+Color Scheme: Use a dark mode theme. A dark charcoal background (#1a1a1a), slightly lighter cards for content (#2a2a2a), and a vibrant accent color like electric blue (#00BFFF) for the title, button, and highlights.
+
+Typography: Use a clean, sans-serif font like 'Inter' or 'Poppins' from Google Fonts.
+
+UI Components:
+
+Header: A prominent title, e.g., "⚡ News Brief Generator".
+
+Input Form: A large <textarea> with placeholder text like "Paste your news article here..." and a stylish "Generate Brief" button underneath.
+
+Loading State: After clicking the button, display a simple loading animation or message while the summaries are being generated.
+
+Output Section:
+
+Display the results in three distinct "cards."
+
+Each card should have a clear title (e.g., "Bulleted Points," "Abstract Summary," "Simple English").
+
+The card identified as the "Most Relevant" should have a glowing blue border and a small badge at the top corner that says "Best Fit."
+
+4. Backend Logic (main.py)
+Create a single Flask route / that handles both GET requests (to display the initial page) and POST requests (to handle the form submission).
+
+Inside the POST request logic:
+
+Retrieve the article text from the form.
+
+Use scikit-learn's TfidfVectorizer to extract the top 10 keywords from the article.
+
+Initialize the Groq client.
+
+Make three parallel or sequential calls to the Groq API using the prompts below.
+
+Calculate the keyword overlap score for each summary.
+
+Pass the three summaries and a variable indicating the best one to the index.html template for rendering.
+
+5. Example Prompts for Groq API
+Use these specific system prompts for the API calls:
+
+Bulleted: You are an expert summarizer. Summarize the following news article into a concise, bulleted list of its most important points.
+
+Abstractive: You are a skilled journalist. Create a short, abstractive summary of the following text in one paragraph. Capture the core message and tone of the original article.
+
+Simple English: You are a teacher. Explain the following news article in simple, easy-to-understand English, as if you were explaining it to a 12-year-old.
+
+Please generate all the necessary code and files to make this project fully functional within the Replit environment.

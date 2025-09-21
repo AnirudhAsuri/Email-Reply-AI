@@ -1,131 +1,97 @@
- Email-Reply-AI
-<div align="center">
+# 📧 Email-Reply-AI
 
-Craft perfect email replies in seconds with the power of AI.
+An intelligent assistant to help you craft professional email replies in seconds.
 
-</div>
+***
 
-<div align="center">
+### Table of Contents
+* [About The Project](#about-the-project)
+* [Screenshot](#screenshot)
+* [Key Features](#key-features)
+* [Tech Stack](#tech-stack)
+* [Getting Started](#getting-started)
+* [Usage](#usage)
+* [Roadmap](#roadmap)
+* [License](#license)
+* [Contact](#contact)
 
-</div>
+***
 
-About The Project
-Email remains a primary form of communication, but drafting professional, well-structured replies can be time-consuming. Email-Reply-AI is a tool designed to alleviate this burden. By simply pasting the content of an email you've received and providing a brief instruction, the system leverages a powerful Large Language Model (LLM) to generate a context-aware, polished, and ready-to-send reply.
+## About The Project
 
-This project was built to explore the practical applications of modern LLMs in automating everyday tasks, saving users valuable time and mental energy.
+Drafting professional, well-structured email replies can be time-consuming. **Email-Reply-AI** is a tool designed to solve this problem. By pasting the content of an email you've received and providing a simple instruction (e.g., "politely decline" or "accept the invitation"), the system leverages a powerful Large Language Model (LLM) to generate a context-aware, polished, and ready-to-send reply. This project saves users valuable time and mental energy.
 
-Live Demo / Screenshot
-Below is a quick look at the user interface and functionality.
+***
 
-<img width="2284" height="1776" alt="image" src="https://github.com/user-attachments/assets/747d1b89-c31e-4c3a-b5f8-35a46632a415" />
+## Screenshot
 
+<img width="2163" height="1691" alt="image" src="https://github.com/user-attachments/assets/3826837f-3e2d-4744-a7c6-04eada88df6b" />
 
-Key Features
-Context-Aware Generation: The AI understands the context of the original email to craft relevant replies.
+***
 
-Instruction-Based Control: Guide the AI with simple prompts like "Politely decline," "Accept and ask for the agenda," or "Say I'll look into this."
+## Key Features
 
-Tone Adjustment: (Optional Feature) Easily specify the desired tone—formal, casual, friendly, etc.
+* **Context-Aware Generation:** The AI understands the original email to craft relevant replies.
+* **Instruction-Based Control:** Guide the AI with simple prompts to get the exact response you need.
+* **Simple Web Interface:** A clean and intuitive UI built for ease of use.
+* **One-Click Copy:** Instantly copy the generated reply to your clipboard.
 
-Simple Web Interface: A clean and intuitive UI built with Streamlit for ease of use.
+***
 
-One-Click Copy: Instantly copy the generated reply to your clipboard.
+## Tech Stack
 
-How It Works
-The application follows a simple but powerful workflow to generate replies:
+* **Backend:** Python
+* **Frontend:** Streamlit
+* **LLM Provider:** Groq API / OpenAI API
+* **Environment Management:** python-dotenv
 
-User Input: The user pastes the original email content and provides a short instruction for the desired reply.
+***
 
-Prompt Engineering: The backend constructs a detailed prompt for the LLM, combining the original email, user instructions, and predefined formatting rules.
+## Getting Started
 
-LLM Inference: The engineered prompt is sent to a powerful LLM API (e.g., OpenAI, Gemini, Groq) for processing.
+Follow these instructions to get a local copy of the project set up and running.
 
-Response Generation: The LLM generates a high-quality email reply based on the prompt.
+### Prerequisites
 
-Display Output: The generated reply is displayed in the user interface, ready to be copied and used.
+* Python 3.9+
+* Git
 
-Tech Stack
-This project is built using modern, open-source technologies:
+### Installation
 
-Backend:
+1.  **Clone the repository** to your local machine.
+    ```sh
+    git clone [https://github.com/AnirudhAsuri/Email-Reply-AI.git](https://github.com/AnirudhAsuri/Email-Reply-AI.git)
+    cd Email-Reply-AI
+    ```
 
-Frontend / UI:
+2.  **Create and activate a virtual environment.**
+    * For macOS/Linux:
+        ```sh
+        python3 -m venv venv
+        source venv/bin/activate
+        ```
+    * For Windows:
+        ```sh
+        python -m venv venv
+        .\venv\Scripts\activate
+        ```
 
-LLM Provider:  / [Your Chosen LLM Here]
+3.  **Install the required packages.**
+    ```sh
+    pip install -r requirements.txt
+    ```
 
-Environment Management: python-dotenv
+4.  **Set up your environment variables.**
+    * Create a file named `.env` by copying the example file.
+    * Add your API key to the `.env` file:
+        ```env
+        API_KEY="YourSecretApiKeyHere"
+        ```
 
-⚙️ Getting Started
-To get a local copy up and running, follow these simple steps.
+***
 
-Prerequisites
-Make sure you have Python 3.9+ and pip installed on your system.
+## Usage
 
-`python --version`
-
-Installation
-Clone the repository:
-
-`git clone https://github.com/AnirudhAsuri/Email-Reply-AI.git
-cd Email-Reply-AI
-Create and activate a virtual environment (recommended):`
-
-On macOS/Linux:
-
-`python3 -m venv venv
-source venv/bin/activate
-On Windows:`
-
-`python -m venv venv
-.\venv\Scripts\activate
-Install the required packages:`
-
-`pip install -r requirements.txt
-Set up your environment variables:`
-
-Create a new file named .env in the root directory.
-
-Copy the contents of .env.example into it.
-
-Add your LLM API key to the .env file:
-
-Code snippet
-
-`API_KEY="sk-YourSecretApiKeyHere"`
-💻 Usage
-Once the installation is complete, you can run the application with a single command:
-
-`streamlit run app.py`
-
-Open your web browser and navigate to the local URL provided by Streamlit (usually http://localhost:8501).
-
-🗺️ Roadmap
-Here are some features and improvements planned for the future:
-
-[ ] Direct Gmail/Outlook API integration to read and reply to emails from the app.
-
-[ ] Support for analyzing and replying to emails with attachments.
-
-[ ] User-selectable presets for common reply types (e.g., meeting confirmations).
-
-[ ] Option to fine-tune a smaller, open-source model for more specialized tasks.
-
-[ ] Deploy the application as a browser extension.
-
-See the open issues for a full list of proposed features (and known issues).
-
-Contributing
-Contributions are what make the open-source community such an amazing place to learn, inspire, and create. Any contributions you make are greatly appreciated.
-
-If you have a suggestion that would make this better, please fork the repo and create a pull request. You can also simply open an issue with the tag "enhancement".
-
-Fork the Project
-
-Create your Feature Branch (git checkout -b feature/AmazingFeature)
-
-Commit your Changes (git commit -m 'Add some AmazingFeature')
-
-Push to the Branch (git push origin feature/AmazingFeature)
-
-Open a Pull Request
-
+To start the application, run the following command in your terminal:
+```sh
+streamlit run app.py

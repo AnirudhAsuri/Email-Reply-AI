@@ -11,9 +11,6 @@ An intelligent assistant to help you craft professional email replies in seconds
 * [Tech Stack](#tech-stack)
 * [Getting Started](#getting-started)
 * [Usage](#usage)
-* [Roadmap](#roadmap)
-* [License](#license)
-* [Contact](#contact)
 
 ***
 
